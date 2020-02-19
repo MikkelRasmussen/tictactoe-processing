@@ -38,11 +38,12 @@ void draw() {
         for(int i = 0; i < 9; i++){
           board.squares[i] = 0;
         }
-        g = 9;
+        g = 0;
         board.circle = false;
         board.cross = false;
+        
         gameState = "game";
-               
+        keyPressed = false;        
       }
     }
     
