@@ -7,7 +7,9 @@ class Board {
   PVector location;
   int size = 50;
   int gsec;
-
+  
+  String won;
+  
   boolean turn, state;
 
   Board() {
@@ -67,16 +69,12 @@ class Board {
       ellipse(location.x, location.y, size*2, size*2);
     }
 
-    fill(50);
-    textSize(60);
-    if (cross) {
-      text("Cross wins", 100, 100);
-    } else if (circle) {
-      text("Circle wins", 100, 100);
-    }
+   
   }
 
   void input() {
+    
+    
     if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > 0) && (mouseY < height*1/3)) {
       if (turn) {
         squares[0] = 1;
@@ -147,6 +145,8 @@ class Board {
   }
 
   void winCondition() {
+    
+    
     // Vandret række 1
     if (squares[0] + squares[1] + squares[2] == 3) {
       cross = true;
@@ -194,6 +194,23 @@ class Board {
       cross = true;
     } else if (squares[2] + squares[4] + squares[6] == 15) {
       circle = true;
+    }
+    
+    
+    if((cross) || (circle)){
+      gameState = "win";
+      
+      if (cross){
+        won = "Cross";
+      } else if (circle ) {
+        won = "Circle";
+      }
+    }
+    
+    if(g == 9){
+      won = "Tied";
+      gameState = "win";
+      
     }
   }
 }
