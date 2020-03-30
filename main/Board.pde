@@ -7,9 +7,9 @@ class Board {
   PVector location;
   int size = 50;
   int gsec;
-  
+
   String won;
-  
+
   boolean turn, state;
 
   Board() {
@@ -68,85 +68,92 @@ class Board {
     } else {
       ellipse(location.x, location.y, size*2, size*2);
     }
-
-   
   }
 
   void input() {
-    
-    
-    if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > 0) && (mouseY < height*1/3)) {
+
+
+    if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > 0) && (mouseY < height*1/3) && (squares[0] == 0)) {
       if (turn) {
         squares[0] = 1;
       } else {
         squares[0] = 5;
       }
+      board.turn = !board.turn;
       println(squares[0]);
-    } else if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > 0) && (mouseY < height*1/3)) {
+    } else if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > 0) && (mouseY < height*1/3)&& (squares[1] == 0)) {
       if (turn) {
         squares[1] = 1;
       } else {
         squares[1] = 5;
       }
+      board.turn = !board.turn;
       println(squares[1]);
-    } else if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > 0) && (mouseY < height*1/3)) {
+    } else if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > 0) && (mouseY < height*1/3)&& (squares[2] == 0)) {
       if (turn) {
         squares[2] = 1;
       } else {
         squares[2] = 5;
       }
+      board.turn = !board.turn;
       println(squares[2]);
-    } else if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > height*1/3) && (mouseY < height*2/3)) {
+    } else if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > height*1/3) && (mouseY < height*2/3) && (squares[3] == 0)) {
       if (turn) {
         squares[3] = 1;
       } else {
         squares[3] = 5;
       }
+      board.turn = !board.turn;
       println(squares[3]);
-    } else if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > height*1/3) && (mouseY < height*2/3)) {
+    } else if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > height*1/3) && (mouseY < height*2/3) && (squares[4] == 0)) {
       if (turn) {
         squares[4] = 1;
       } else {
         squares[4] = 5;
       }
+      board.turn = !board.turn;
       println(squares[4]);
-    } else if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > height*1/3) && (mouseY < height*2/3)) {
+    } else if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > height*1/3) && (mouseY < height*2/3) && (squares[5] == 0)) {
       if (turn) {
         squares[5] = 1;
       } else {
         squares[5] = 5;
       }
+      board.turn = !board.turn;
       println(squares[5]);
     }
-    if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > height*2/3) && (mouseY < height)) {
+    if ((mouseX > 0) && (mouseX < width*1/3) && (mouseY > height*2/3) && (mouseY < height) && (squares[6] == 0)) {
       if (turn) {
         squares[6] = 1;
       } else {
         squares[6] = 5;
       }
+      board.turn = !board.turn;
       println(squares[6]);
     }
-    if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > height*2/3) && (mouseY < height)) {
+    if ((mouseX > width*1/3) && (mouseX < width*2/3) && (mouseY > height*2/3) && (mouseY < height) && (squares[7] == 0)) {
       if (turn) {
         squares[7] = 1;
       } else {
         squares[7] = 5;
       }
+      board.turn = !board.turn;
       println(squares[7]);
     }
-    if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > height*2/3) && (mouseY < height)) {
+    if ((mouseX > width*2/3) && (mouseX < width) && (mouseY > height*2/3) && (mouseY < height) && (squares[8] == 0)) {
       if (turn) {
         squares[8] = 1;
       } else {
         squares[8] = 5;
       }
+      board.turn = !board.turn;
       println(squares[8]);
     }
   }
 
   void winCondition() {
-    
-    
+
+
     // Vandret række 1
     if (squares[0] + squares[1] + squares[2] == 3) {
       cross = true;
@@ -195,22 +202,21 @@ class Board {
     } else if (squares[2] + squares[4] + squares[6] == 15) {
       circle = true;
     }
-    
-    
-    if((cross) || (circle)){
+
+
+    if ((cross) || (circle)) {
       gameState = "win";
-      
-      if (cross){
+
+      if (cross) {
         won = "Cross";
       } else if (circle ) {
         won = "Circle";
       }
     }
-    
-    if(g == 9){
+
+    if (g == 9) {
       won = "Tied";
       gameState = "win";
-      
     }
   }
 }
